@@ -54,29 +54,41 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);				
 		mHandler = new Handler();
-		ConnectedStatus.isConnected = false;
+		
 		bt_adapter = BluetoothAdapter.getDefaultAdapter();
 		btn_search = (ImageButton) findViewById(R.id.btn_search);
 		tv_klickmich = (TextView) findViewById(R.id.tv_klickmich);
 		iv_arrow = (ImageView) findViewById(R.id.iv_arrow);
-		
 		videoView = (VideoView) findViewById(R.id.videoView);
-		Uri uri = Uri.parse("android.resource://" + getPackageName() +"/" + R.raw.makeseverynap);
-		videoView.setVideoURI(uri);
-		videoView.setZOrderOnTop(true);
-		videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener()  {
+		
+		/* nur wenn das Activity zum ersten Mal aufgerufen wird, soll das Video gestartet werden */
+		if(Global.main_count==0)	{
+			Uri uri = Uri.parse("android.resource://" + getPackageName() +"/" + R.raw.makeseverynap);
+			videoView.setVideoURI(uri);
+			videoView.setZOrderOnTop(true);
+			videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener()  {
 
-			 @Override
-			 public void onCompletion(MediaPlayer arg0)  {
+				@Override
+				public void onCompletion(MediaPlayer arg0)  {
 				 
-				 videoView.setVisibility(View.INVISIBLE);
-				 tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
-				 iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
-				 tv_klickmich.setVisibility(View.VISIBLE);
-				 iv_arrow.setVisibility(View.VISIBLE);
-			 }});
+					videoView.setVisibility(View.INVISIBLE);
+					tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+					tv_klickmich.setVisibility(View.VISIBLE);
+					iv_arrow.setVisibility(View.VISIBLE);
+				}});
 			
-		videoView.start();		
+			videoView.start();
+			Global.main_count++;
+		}
+		
+		else	{
+			videoView.setVisibility(View.INVISIBLE);
+			tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+			iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+			tv_klickmich.setVisibility(View.VISIBLE);
+			iv_arrow.setVisibility(View.VISIBLE);
+		}			
 		BTActivate();
 	}
 	
@@ -210,7 +222,8 @@ public class MainActivity extends Activity {
 			} catch (IOException e1) { }
             return;
         }
-		ConnectedStatus.isConnected = true;
+		Global.isConnected = true;
+		Global.bt_socket = bt_socket;
 		Intent intent_connected = new Intent(MainActivity.this, Connected.class);
         startActivity(intent_connected); 
 	}
@@ -279,7 +292,7 @@ public class MainActivity extends Activity {
 	        	
 	        	if(arr_name.getCount()>0)	{
 	        		
-	        		AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+	        		AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this);
 	        		builder.setTitle("Wähle ein Gerät aus");
 	        		builder.setAdapter(arr_name, new DialogInterface.OnClickListener() {     		
 	        			@Override

@@ -33,7 +33,7 @@ public class About_Us extends Activity {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
 	    case R.id.main:
-	    	if(!ConnectedStatus.isConnected)	{
+	    	if(!Global.isConnected)	{
 	    		Intent intent_home = new Intent(About_Us.this,MainActivity.class);
 	    		startActivity(intent_home);
 	    	}
