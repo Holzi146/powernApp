@@ -28,17 +28,18 @@ public final class R {
         public static final int pfeil=0x7f020004;
     }
     public static final class id {
-        public static final int about_us=0x7f09000a;
-        public static final int btn_pause=0x7f090002;
-        public static final int btn_play=0x7f090001;
-        public static final int btn_search=0x7f090003;
-        public static final int hilfen=0x7f090008;
-        public static final int iv_arrow=0x7f090005;
-        public static final int main=0x7f090007;
-        public static final int tipps=0x7f090009;
-        public static final int tv_klickmich=0x7f090004;
-        public static final int tv_text=0x7f090000;
-        public static final int videoView=0x7f090006;
+        public static final int about_us=0x7f09000b;
+        public static final int btn_close=0x7f090000;
+        public static final int btn_pause=0x7f090003;
+        public static final int btn_play=0x7f090002;
+        public static final int btn_search=0x7f090004;
+        public static final int hilfen=0x7f090009;
+        public static final int iv_arrow=0x7f090006;
+        public static final int main=0x7f090008;
+        public static final int tipps=0x7f09000a;
+        public static final int tv_klickmich=0x7f090005;
+        public static final int tv_text=0x7f090001;
+        public static final int videoView=0x7f090007;
     }
     public static final class layout {
         public static final int activity_about__us=0x7f030000;

@@ -10,12 +10,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class Connected extends Activity {
 	
 	/* Sockets */
 	BluetoothSocket bt_socket;
+	/* Buttons */
+	Button btn_connected;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +47,26 @@ public class Connected extends Activity {
     	    		startActivity(intent_home);
     			}
     		});
-    		AlertDialog dialog = builder.create();    		
+    		AlertDialog dialog = builder.create();  		
     		dialog.show();
 		}
 		/* Device is a powernApp-Device */
-		else
-			Toast.makeText(getApplicationContext(), "powernApp-Device", Toast.LENGTH_SHORT).show();
+		else	{
+			btn_connected = (Button) findViewById(R.id.btn_close);
+			btn_connected.setOnClickListener(new View.OnClickListener() {			
+				@Override
+				public void onClick(View arg0) {
+					try {
+						bt_socket.close();
+					} catch (IOException e) {
+						Toast.makeText(getApplicationContext(), "Socket konnte nicht geschlossen werden!", Toast.LENGTH_SHORT).show();
+					}
+					Global.isConnected = false;
+    				Intent intent_home = new Intent(Connected.this,MainActivity.class);
+    	    		startActivity(intent_home);
+				}
+			});
+		}
 	}
 	
 	@Override
