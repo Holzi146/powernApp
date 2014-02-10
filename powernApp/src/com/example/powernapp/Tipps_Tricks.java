@@ -33,8 +33,14 @@ public class Tipps_Tricks extends Activity {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
 	    case R.id.main:
-	    	Intent intent_tipps = new Intent(Tipps_Tricks.this,MainActivity.class);
-	        startActivity(intent_tipps);	
+	    	if(!ConnectedStatus.isConnected)	{
+	    		Intent intent_home = new Intent(Tipps_Tricks.this,MainActivity.class);
+	    		startActivity(intent_home);
+	    	}
+	    	else	{
+	    		Intent intent_connected = new Intent(Tipps_Tricks.this,Connected.class);
+	    		startActivity(intent_connected);
+	    	}	
 	        return true;
 	    case R.id.hilfen:
 	        Intent intent_help = new Intent(Tipps_Tricks.this,Hilfen.class);

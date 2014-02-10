@@ -88,8 +88,14 @@ public class Hilfen extends Activity {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
 	    case R.id.main:
-	        Intent intent_main = new Intent(Hilfen.this,MainActivity.class);
-	        startActivity(intent_main);
+	    	if(!ConnectedStatus.isConnected)	{
+	    		Intent intent_home = new Intent(Hilfen.this,MainActivity.class);
+	    		startActivity(intent_home);
+	    	}
+	    	else	{
+	    		Intent intent_connected = new Intent(Hilfen.this,Connected.class);
+	    		startActivity(intent_connected);
+	    	}
 	        return true;
 	    case R.id.tipps:
 	    	Intent intent_tipps = new Intent(Hilfen.this,Tipps_Tricks.class);

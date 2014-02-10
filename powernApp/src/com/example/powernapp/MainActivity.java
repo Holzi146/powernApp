@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -22,8 +21,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -48,16 +45,16 @@ public class MainActivity extends Activity {
 	final int btActivate_result = 0;
 	boolean buttonImage = true;
 	boolean searching = false;
-	/* Sockets */
+	/* Sockets und Handler */
 	BluetoothSocket bt_socket;
 	Handler mHandler;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-				
+		setContentView(R.layout.activity_main);				
 		mHandler = new Handler();
+		ConnectedStatus.isConnected = false;
 		bt_adapter = BluetoothAdapter.getDefaultAdapter();
 		btn_search = (ImageButton) findViewById(R.id.btn_search);
 		tv_klickmich = (TextView) findViewById(R.id.tv_klickmich);
@@ -213,9 +210,9 @@ public class MainActivity extends Activity {
 			} catch (IOException e1) { }
             return;
         }
-		setIsConnected(true);
+		ConnectedStatus.isConnected = true;
 		Intent intent_connected = new Intent(MainActivity.this, Connected.class);
-        startActivity(intent_connected);
+        startActivity(intent_connected); 
 	}
 	
 	private void SendData(BluetoothSocket s)	{
@@ -320,13 +317,4 @@ public class MainActivity extends Activity {
 			}
 		}		
 	}
-	/* Globale Bool-Variable für den Connected-Status (wird bei der Activity-Wahl bei den Menüs gebraucht */
-	private boolean isConnected;
-
-	  public boolean getIsConnected(){
-	    return isConnected;
-	  }
-	  public void setIsConnected(boolean value){
-		  isConnected = value;
-	  }
 }

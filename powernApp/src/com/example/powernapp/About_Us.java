@@ -33,14 +33,13 @@ public class About_Us extends Activity {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
 	    case R.id.main:
-	    	MainActivity obj = (MainActivity)getApplicationContext();
-	    	if(obj.getIsConnected())	{
-	    		Intent intent_connected = new Intent(About_Us.this,Connected.class);
-		        startActivity(intent_connected);
-	    	}
-	    	else	{
+	    	if(!ConnectedStatus.isConnected)	{
 	    		Intent intent_home = new Intent(About_Us.this,MainActivity.class);
 	    		startActivity(intent_home);
+	    	}
+	    	else	{
+	    		Intent intent_connected = new Intent(About_Us.this,Connected.class);
+	    		startActivity(intent_connected);
 	    	}
 	        return true;
 	    case R.id.hilfen:
