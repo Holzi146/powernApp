@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">powernApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_sleep_aids">SleepAids</string>
+    <string name="title_activity_einschlafhilfen">Einschlafhilfen</string>
+    <string name="ButtonContent">Nach Geräten suchen</string>
+    <string name="title_activity_hilfen">Hilfen</string>
+    <string name="title_activity_tipps__tricks">Tipps_Tricks</string>
+    <string name="title_activity_about__us">About_Us</string>
+    <string name="tipps_und_tricks">Tipps und Tricks</string>
+    <string name="hilfen">Hilfen</string>
+    <string name="about_us">Über uns</string>
+    <string name="title_activity_connected">Connected</string>
+
+</resources>
