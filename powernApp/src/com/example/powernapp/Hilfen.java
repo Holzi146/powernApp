@@ -94,6 +94,7 @@ public class Hilfen extends Activity {
 	    	}
 	    	else	{
 	    		Intent intent_connected = new Intent(Hilfen.this,Connected.class);
+	    		intent_connected.putExtra("caller", "help");
 	    		startActivity(intent_connected);
 	    	}
 	        return true;

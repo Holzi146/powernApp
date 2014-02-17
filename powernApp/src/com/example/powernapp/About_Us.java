@@ -39,6 +39,7 @@ public class About_Us extends Activity {
 	    	}
 	    	else	{
 	    		Intent intent_connected = new Intent(About_Us.this,Connected.class);
+	    		intent_connected.putExtra("caller", "about");
 	    		startActivity(intent_connected);
 	    	}
 	        return true;

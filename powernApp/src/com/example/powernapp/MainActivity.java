@@ -70,8 +70,9 @@ public class MainActivity extends Activity {
 
 				@Override
 				public void onCompletion(MediaPlayer arg0)  {
-				 
+					/* Animations */
 					videoView.setVisibility(View.INVISIBLE);
+					btn_search.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					tv_klickmich.setVisibility(View.VISIBLE);
@@ -83,7 +84,9 @@ public class MainActivity extends Activity {
 		}
 		
 		else	{
+			/* Animations */
 			videoView.setVisibility(View.INVISIBLE);
+			btn_search.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 			tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 			iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 			tv_klickmich.setVisibility(View.VISIBLE);
@@ -225,7 +228,8 @@ public class MainActivity extends Activity {
 		Global.isConnected = true;
 		Global.bt_socket = bt_socket;
 		Intent intent_connected = new Intent(MainActivity.this, Connected.class);
-        startActivity(intent_connected); 
+		intent_connected.putExtra("caller", "main");
+		startActivity(intent_connected); 
 	}
 	
 	private void SendData(BluetoothSocket s)	{

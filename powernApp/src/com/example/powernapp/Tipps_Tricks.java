@@ -39,6 +39,7 @@ public class Tipps_Tricks extends Activity {
 	    	}
 	    	else	{
 	    		Intent intent_connected = new Intent(Tipps_Tricks.this,Connected.class);
+	    		intent_connected.putExtra("caller", "tipps");
 	    		startActivity(intent_connected);
 	    	}	
 	        return true;
