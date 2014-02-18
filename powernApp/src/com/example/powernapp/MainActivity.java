@@ -71,8 +71,7 @@ public class MainActivity extends Activity {
 				@Override
 				public void onCompletion(MediaPlayer arg0)  {
 					/* Animations */
-					videoView.setVisibility(View.INVISIBLE);
-					btn_search.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+					videoView.setVisibility(View.INVISIBLE);					
 					tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					tv_klickmich.setVisibility(View.VISIBLE);

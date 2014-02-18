@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="#ff33b5e5"
+        android:background="#ffa200"
         android:ellipsize="marquee"
         android:fontFamily="sans-serif-light"
         android:text="zum Beenden klicken"
@@ -38,11 +38,11 @@
         android:layout_marginBottom="66dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ff33b5e5"
+        android:background="#00bb3f"
         android:fontFamily="sans-serif-light"
         android:text="Start"
         android:textColor="#ffff"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TimePicker
