@@ -2,28 +2,23 @@ package com.example.powernapp;
 
 import android.os.Bundle;
 import android.app.ActionBar;
-import android.app.ActionBar.TabListener;
 import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.app.ActionBar.Tab;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 
 public class Musikplayer extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ActionBar actionBar = getActionBar();
-		actionBar.setTitle("Musikplayer");
 		setContentView(R.layout.activity_musikplayer);
 		
+		/*
+		ActionBar actionBar = getActionBar();
+		actionBar.setTitle("Musikplayer");
+		
+		/*
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		ActionBar.Tab tab1 = actionBar.newTab().setText("Eigene Musik");
 		ActionBar.Tab tab2 = actionBar.newTab().setText("Appmusik");
@@ -66,6 +61,7 @@ public class Musikplayer extends Activity {
 		
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
+		*/
 	}
 
 	@Override

@@ -114,7 +114,7 @@ public class MainActivity extends Activity {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
 	    case R.id.musikplayer:
-	        Intent intent_help = new Intent(MainActivity.this,Musikplayer.class);
+	        Intent intent_help = new Intent(MainActivity.this, Musikplayer.class);
 	        startActivity(intent_help);     
 	        return true;
 	    case R.id.tipps:
