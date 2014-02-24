@@ -43,8 +43,8 @@ public class Tipps_Tricks extends Activity {
 	    		startActivity(intent_connected);
 	    	}	
 	        return true;
-	    case R.id.hilfen:
-	        Intent intent_help = new Intent(Tipps_Tricks.this,Hilfen.class);
+	    case R.id.musikplayer:
+	        Intent intent_help = new Intent(Tipps_Tricks.this,Musikplayer.class);
 	        startActivity(intent_help);	        
 	        return true;	    
 	    case R.id.about_us:

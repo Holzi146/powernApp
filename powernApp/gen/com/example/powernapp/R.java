@@ -28,17 +28,19 @@ public final class R {
         public static final int pfeil=0x7f020004;
     }
     public static final class id {
-        public static final int about_us=0x7f09000e;
+        public static final int about_us=0x7f09000f;
+        public static final int action_settings=0x7f090010;
         public static final int btn_close=0x7f090000;
         public static final int btn_pause=0x7f090006;
         public static final int btn_play=0x7f090005;
         public static final int btn_search=0x7f090007;
         public static final int btn_start=0x7f090002;
         public static final int cb_time=0x7f090001;
-        public static final int hilfen=0x7f09000c;
         public static final int iv_arrow=0x7f090009;
-        public static final int main=0x7f09000b;
-        public static final int tipps=0x7f09000d;
+        public static final int main=0x7f09000c;
+        public static final int musikplayer=0x7f09000d;
+        public static final int pager=0x7f09000b;
+        public static final int tipps=0x7f09000e;
         public static final int tp_time=0x7f090003;
         public static final int tv_klickmich=0x7f090008;
         public static final int tv_text=0x7f090004;
@@ -50,14 +52,18 @@ public final class R {
         public static final int activity_einschlafhilfen=0x7f030002;
         public static final int activity_hilfen=0x7f030003;
         public static final int activity_main=0x7f030004;
-        public static final int activity_tipps__tricks=0x7f030005;
+        public static final int activity_musikplayer=0x7f030005;
+        public static final int activity_musikplayer_eigene_musik=0x7f030006;
+        public static final int activity_tipps__tricks=0x7f030007;
     }
     public static final class menu {
         public static final int about__us=0x7f080000;
         public static final int connected=0x7f080001;
         public static final int hilfen=0x7f080002;
         public static final int main=0x7f080003;
-        public static final int tipps__tricks=0x7f080004;
+        public static final int musikplayer=0x7f080004;
+        public static final int musikplayer_eigene_musik=0x7f080005;
+        public static final int tipps__tricks=0x7f080006;
     }
     public static final class raw {
         public static final int makeseverynap=0x7f040000;
