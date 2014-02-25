@@ -1,6 +1,7 @@
 package com.example.powernapp;
 
 import java.io.IOException;
+import java.io.OutputStream;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -8,6 +9,7 @@ import android.app.AlertDialog;
 import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -106,12 +108,15 @@ public class Connected extends Activity {
 			btn_start.setOnClickListener(new View.OnClickListener() {			
 				@Override
 				public void onClick(View arg0) {
-					if(cb_time.isChecked())	{
-						Toast.makeText(getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
-					}
-					else	{
-						Toast.makeText(getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
-					}
+					OutputStream tmpOut = null;
+
+					try {
+			            tmpOut = bt_socket.getOutputStream();
+			        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
+					
+					try {
+						tmpOut.write(1);
+			        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
 				}
 			});
 		}
@@ -133,7 +138,7 @@ public class Connected extends Activity {
 	@Override
 	public void onBackPressed() {
 	    if(caller.equals("main"))	{
-	    	Intent intent_help = new Intent(Connected.this,Hilfen.class);
+	    	Intent intent_help = new Intent(Connected.this,Musikplayer.class);
 	        startActivity(intent_help);
 	    }
 	    if(caller.equals("about"))	{
@@ -141,7 +146,7 @@ public class Connected extends Activity {
 	        startActivity(intent_about);
 	    }
 	    if(caller.equals("help"))	{
-	    	Intent intent_help = new Intent(Connected.this,Hilfen.class);
+	    	Intent intent_help = new Intent(Connected.this,Musikplayer.class);
 	        startActivity(intent_help);
 	    }
 	    if(caller.equals("tipps"))	{
@@ -160,8 +165,8 @@ public class Connected extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
-	    case R.id.hilfen:
-	        Intent intent_help = new Intent(Connected.this,Hilfen.class);
+	    case R.id.musikplayer:
+	        Intent intent_help = new Intent(Connected.this,Musikplayer.class);
 	        startActivity(intent_help);	        
 	        return true;
 	    case R.id.tipps:

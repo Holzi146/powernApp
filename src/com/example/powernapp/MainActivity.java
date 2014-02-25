@@ -71,7 +71,15 @@ public class MainActivity extends Activity {
 				@Override
 				public void onCompletion(MediaPlayer arg0)  {
 					/* Animations */
+<<<<<<< HEAD
+<<<<<<< HEAD
+					videoView.setVisibility(View.INVISIBLE);
+=======
 					videoView.setVisibility(View.INVISIBLE);					
+>>>>>>> 363f3954fcf64c38298cd7e401e9dfcb17ba03a9
+=======
+					videoView.setVisibility(View.INVISIBLE);					
+>>>>>>> 363f3954fcf64c38298cd7e401e9dfcb17ba03a9
 					tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					tv_klickmich.setVisibility(View.VISIBLE);
@@ -111,8 +119,8 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    /* Handle item selection */
 	    switch (item.getItemId()) {
-	    case R.id.hilfen:
-	        Intent intent_help = new Intent(MainActivity.this,Hilfen.class);
+	    case R.id.musikplayer:
+	        Intent intent_help = new Intent(MainActivity.this,Musikplayer.class);
 	        startActivity(intent_help);     
 	        return true;
 	    case R.id.tipps:

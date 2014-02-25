@@ -30,7 +30,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.example.powernapp.Hilfen"
+            android:name="com.example.powernapp.Musikplayer"
             android:label="@string/title_activity_hilfen" >
         </activity>
         <activity
@@ -44,6 +44,14 @@
         <activity
             android:name="com.example.powernapp.Connected"
             android:label="@string/title_activity_connected" >
+        </activity>
+        <activity
+            android:name="com.example.powernapp.Musikplayer_eigene"
+            android:label="@string/title_activity_musikplayer_eigene" >
+        </activity>
+        <activity
+            android:name="com.example.powernapp.Musikplayer_eigeneMusik"
+            android:label="@string/title_activity_musikplayer_eigene_musik" >
         </activity>
     </application>
 

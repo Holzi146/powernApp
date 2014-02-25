@@ -14,5 +14,7 @@
     <string name="hilfen">Hilfen</string>
     <string name="about_us">Über uns</string>
     <string name="title_activity_connected">Connected</string>
+    <string name="title_activity_musikplayer_eigene">Musikplayer_eigene</string>
+    <string name="title_activity_musikplayer_eigene_musik">Musikplayer_eigeneMusik</string>
 
 </resources>

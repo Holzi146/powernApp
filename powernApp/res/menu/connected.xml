@@ -1,5 +1,0 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >  
-	<item android:id="@+id/musikplayer" android:title="Musikplayer"></item>
-    <item android:id="@+id/tipps" android:title="Tipps und Tricks"></item>
-    <item android:id="@+id/about_us" android:title="Über uns"></item>
-</menu>
