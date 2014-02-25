@@ -1,8 +1,6 @@
 package com.example.powernapp;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.lang.reflect.Method;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,7 +14,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,15 +68,9 @@ public class MainActivity extends Activity {
 				@Override
 				public void onCompletion(MediaPlayer arg0)  {
 					/* Animations */
-<<<<<<< HEAD
-<<<<<<< HEAD
 					videoView.setVisibility(View.INVISIBLE);
-=======
 					videoView.setVisibility(View.INVISIBLE);					
->>>>>>> 363f3954fcf64c38298cd7e401e9dfcb17ba03a9
-=======
 					videoView.setVisibility(View.INVISIBLE);					
->>>>>>> 363f3954fcf64c38298cd7e401e9dfcb17ba03a9
 					tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					tv_klickmich.setVisibility(View.VISIBLE);
@@ -239,6 +230,7 @@ public class MainActivity extends Activity {
 		startActivity(intent_connected); 
 	}
 	
+	/* Send and reveiving methode for bluetooth-connections *
 	private void SendData(BluetoothSocket s)	{
 		
 		OutputStream tmpOut = null;
@@ -270,6 +262,7 @@ public class MainActivity extends Activity {
             }
         }
 	}
+	*/
 	
 	private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {	
 		try {
