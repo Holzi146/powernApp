@@ -13,15 +13,15 @@ import android.view.MenuItem;
 public class Musikplayer extends Activity {
 	
 	ActionBar actionBar;
-	Tab tab1, tab2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_musikplayer);
 		actionBar = getActionBar();
 		actionBar.setTitle("Musikplayer");
-		setContentView(R.layout.activity_musikplayer);
 		
+		/* Following code down here */
 	}
 
 	@Override

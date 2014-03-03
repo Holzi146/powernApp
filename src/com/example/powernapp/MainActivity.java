@@ -75,8 +75,7 @@ public class MainActivity extends Activity {
 					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 					tv_klickmich.setVisibility(View.VISIBLE);
 					iv_arrow.setVisibility(View.VISIBLE);
-				}});
-			
+				}});			
 			videoView.start();
 			Global.main_count++;
 		}
