@@ -15,15 +15,4 @@
         android:background="#d3d3d3"
         android:clickable="false" />
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        style="@drawable/play_50"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="6dp"
-        android:background="@drawable/play_50"
-        android:src="@drawable/play_50" />
-
 </RelativeLayout>
