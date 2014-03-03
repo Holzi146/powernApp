@@ -16,5 +16,6 @@
     <string name="title_activity_connected">Connected</string>
     <string name="title_activity_musikplayer_eigene">Musikplayer_eigene</string>
     <string name="title_activity_musikplayer_eigene_musik">Musikplayer_eigeneMusik</string>
+    <string name="title_activity_musikplayer__appmusik">Musikplayer_Appmusik</string>
 
 </resources>

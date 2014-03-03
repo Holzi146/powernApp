@@ -53,6 +53,10 @@
             android:name="com.example.powernapp.Musikplayer_eigeneMusik"
             android:label="@string/title_activity_musikplayer_eigene_musik" >
         </activity>
+        <activity
+            android:name="com.example.powernapp.Musikplayer_Appmusik"
+            android:label="@string/title_activity_musikplayer__appmusik" >
+        </activity>
     </application>
 
 </manifest>

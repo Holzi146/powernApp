@@ -9,60 +9,19 @@ import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class Musikplayer extends Activity {
+	
+	ActionBar actionBar;
+	Tab tab1, tab2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		ActionBar actionBar = getActionBar();
+		actionBar = getActionBar();
 		actionBar.setTitle("Musikplayer");
 		setContentView(R.layout.activity_musikplayer);
 		
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		ActionBar.Tab tab1 = actionBar.newTab().setText("Eigene Musik");
-		ActionBar.Tab tab2 = actionBar.newTab().setText("Appmusik");
-		
-		tab1.setTabListener(new TabListener() {
-			
-			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub			
-			}
-			
-			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_SHORT).show();				
-			}
-			
-			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub			
-			}
-		});
-		
-		tab2.setTabListener(new TabListener() {
-			
-			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub			
-			}
-			
-			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_SHORT).show();			
-			}
-			
-			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub			
-			}
-		});
-		
-		actionBar.addTab(tab1);
-		actionBar.addTab(tab2);
 	}
 
 	@Override

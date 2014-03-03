@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
 	Handler mHandler;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {		
+	protected void onCreate(Bundle savedInstanceState) {	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);				
 		mHandler = new Handler();
@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 		
 		/* nur wenn das Activity zum ersten Mal aufgerufen wird, soll das Video gestartet werden */
 		if(Global.main_count==0)	{
-			Uri uri = Uri.parse("android.resource://" + getPackageName() +"/" + R.raw.makeseverynap);
+			Uri uri = Uri.parse("android.resource://" + getPackageName() +"/" + R.raw.makeseverynap3);
 			videoView.setVideoURI(uri);
 			videoView.setZOrderOnTop(true);
 			videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener()  {
@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 			iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
 			tv_klickmich.setVisibility(View.VISIBLE);
 			iv_arrow.setVisibility(View.VISIBLE);
-		}			
+		}
 		BTActivate();
 	}
 	
