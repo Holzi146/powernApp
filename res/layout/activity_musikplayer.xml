@@ -5,14 +5,27 @@
     android:background="#fff"
     tools:context=".Musikplayer" >
 
-    <Button
-        android:id="@+id/button1"
+    <FrameLayout
+        android:id="@+id/frameLayout1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="#d3d3d3"
-        android:clickable="false" />
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#d3d3d3" >
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/lv_songs"
+        android:layout_width="270dp"
+        android:layout_height="320dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/frameLayout1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp" >
+
+    </ListView>
 
 </RelativeLayout>

@@ -24,24 +24,23 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
         public static final int logo=0x7f020001;
         public static final int logo2=0x7f020002;
-        public static final int makeseverynap=0x7f020003;
-        public static final int pfeil=0x7f020004;
+        public static final int pfeil=0x7f020003;
     }
     public static final class id {
-        public static final int about_us=0x7f09000d;
-        public static final int action_settings=0x7f09000e;
+        public static final int about_us=0x7f09000e;
         public static final int btn_close=0x7f090000;
         public static final int btn_search=0x7f090004;
         public static final int btn_start=0x7f090002;
-        public static final int button1=0x7f090008;
         public static final int cb_time=0x7f090001;
+        public static final int frameLayout1=0x7f090008;
         public static final int iv_arrow=0x7f090006;
-        public static final int main=0x7f09000a;
-        public static final int musikplayer=0x7f09000b;
-        public static final int tipps=0x7f09000c;
+        public static final int lv_songs=0x7f090009;
+        public static final int main=0x7f09000b;
+        public static final int musikplayer=0x7f09000c;
+        public static final int tipps=0x7f09000d;
         public static final int tp_time=0x7f090003;
         public static final int tv_klickmich=0x7f090005;
-        public static final int tv_text=0x7f090009;
+        public static final int tv_text=0x7f09000a;
         public static final int videoView=0x7f090007;
     }
     public static final class layout {
@@ -57,13 +56,13 @@ public final class R {
         public static final int connected=0x7f080001;
         public static final int main=0x7f080002;
         public static final int musikplayer=0x7f080003;
-        public static final int musikplayer__appmusik=0x7f080004;
-        public static final int musikplayer_eigene_musik=0x7f080005;
-        public static final int tipps__tricks=0x7f080006;
+        public static final int tipps__tricks=0x7f080004;
     }
     public static final class raw {
-        public static final int makeseverynap=0x7f040000;
-        public static final int makeseverynap3=0x7f040001;
+        public static final int makeseverynap3=0x7f040000;
+        public static final int powernapp1=0x7f040001;
+        public static final int powernapp2=0x7f040002;
+        public static final int powernapp3=0x7f040003;
     }
     public static final class string {
         public static final int ButtonContent=0x7f060005;

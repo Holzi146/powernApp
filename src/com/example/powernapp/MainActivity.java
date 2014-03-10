@@ -152,7 +152,7 @@ public class MainActivity extends Activity {
 				    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);				    
 				    startActivityForResult(enableBtIntent, btActivate_result);				    
 				}
-				else	{			
+				else	{
 					BTSearchForDevices();
 				}
 			}
@@ -224,6 +224,7 @@ public class MainActivity extends Activity {
         }
 		Global.isConnected = true;
 		Global.bt_socket = bt_socket;
+		Global.macAddress = mac_address;
 		Intent intent_connected = new Intent(MainActivity.this, Connected.class);
 		intent_connected.putExtra("caller", "main");
 		startActivity(intent_connected); 
