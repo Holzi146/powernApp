@@ -16,33 +16,7 @@
         android:layout_marginTop="0dp"
         android:background="#d3d3d3" >
 
-        <Button
-            android:id="@+id/btn_playpause"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Play" />
-
-        <Button
-            android:id="@+id/btn_stop"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:text="Stop" />
-
     </FrameLayout>
-
-    <ListView
-        android:id="@+id/lv_songs"
-        android:layout_width="270dp"
-        android:layout_height="320dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/frameLayout1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp" >
-
-    </ListView>
 
     <SeekBar
         android:id="@+id/sb_volume"
@@ -51,5 +25,17 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="3dp" />
+
+    <ListView
+        android:id="@+id/lv_songs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameLayout1"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp" >
+
+    </ListView>
 
 </RelativeLayout>
