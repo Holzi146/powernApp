@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,24 +61,29 @@ public class MainActivity extends Activity {
 		
 		/* nur wenn das Activity zum ersten Mal aufgerufen wird, soll das Video gestartet werden */
 		if(Global.main_count==0)	{
-			Uri uri = Uri.parse("android.resource://" + getPackageName() +"/" + R.raw.makeseverynap3);
-			videoView.setVideoURI(uri);
-			videoView.setZOrderOnTop(true);
-			videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener()  {
+			new Thread(new Runnable() { 
+		        @Override
+		        public void run() {
+		        	Uri uri = Uri.parse("android.resource://" + getPackageName() +"/" + R.raw.makeseverynap3);
+					videoView.setVideoURI(uri);
+					videoView.setZOrderOnTop(true);
+					videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener()  {
 
-				@Override
-				public void onCompletion(MediaPlayer arg0)  {
-					/* Animations */
-					videoView.setVisibility(View.INVISIBLE);
-					videoView.setVisibility(View.INVISIBLE);					
-					videoView.setVisibility(View.INVISIBLE);					
-					tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
-					iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
-					tv_klickmich.setVisibility(View.VISIBLE);
-					iv_arrow.setVisibility(View.VISIBLE);
-				}});			
-			videoView.start();
-			Global.main_count++;
+						@Override
+						public void onCompletion(MediaPlayer arg0)  {
+							/* Animations */
+							videoView.setVisibility(View.INVISIBLE);
+							videoView.setVisibility(View.INVISIBLE);					
+							videoView.setVisibility(View.INVISIBLE);					
+							tv_klickmich.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+							iv_arrow.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), android.R.anim.fade_in));
+							tv_klickmich.setVisibility(View.VISIBLE);
+							iv_arrow.setVisibility(View.VISIBLE);
+						}});			
+					videoView.start();
+					Global.main_count++;
+		        }
+		    }).start();		
 		}
 		
 		else	{

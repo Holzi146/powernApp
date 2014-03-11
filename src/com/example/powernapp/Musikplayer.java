@@ -1,10 +1,7 @@
 package com.example.powernapp;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -20,8 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -65,41 +62,26 @@ public class Musikplayer extends Activity {
 	    }).start();
 		
 		/* adding the powernApp-songs to the list */	
-		mySongs.add(new Song("powernApp", "Song 1", "230", true));
-		mySongs.add(new Song("powernApp", "Song 2", "560", true));
-		mySongs.add(new Song("powernApp", "Song 3", "340", true));
+		mySongs.add(new Song("powernApp", "Song 1", "230", null, true));
+		mySongs.add(new Song("powernApp", "Song 2", "560", null, true));
+		mySongs.add(new Song("powernApp", "Song 3", "340", null, true));
 		
-		/* get all the music files from the phone */
+		/* get all other music files from the phone */
 		String selection = MediaStore.Audio.Media.IS_MUSIC + " != 0";
 		String[] projection = {
 		        MediaStore.Audio.Media.ARTIST,
 		        MediaStore.Audio.Media.TITLE,
-		        MediaStore.Audio.Media.DURATION
+		        MediaStore.Audio.Media.DURATION,
+		        MediaStore.Audio.Media.DATA
 		};
 		
 		Cursor cursor = getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, projection, selection, null, null);
 		while(cursor.moveToNext())  {
-			mySongs.add(new Song(cursor.getString(0), cursor.getString(1), cursor.getString(2), false));
+			mySongs.add(new Song(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), false));
 		}
 		
 		ArrayAdapter<Song> adapter = new MyListAdapter();		
 		lv_songs.setAdapter(adapter);
-		
-		lv_songs.setOnItemClickListener(new ListView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int which,
-					long arg3) {
-				
-				/* if the song is a powernApp-song, then play it directly from the raw folder */
-				if(mySongs.get(which).getPowernAppSong())  {
-					playSongFromRaw(mySongs.get(which).getName());
-				}	
-				
-				else  {
-					
-				}
-			}
-	    });
 	}
 	
 	private class MyListAdapter extends ArrayAdapter<Song>  {
@@ -114,7 +96,7 @@ public class Musikplayer extends Activity {
 				itemView = getLayoutInflater().inflate(R.layout.songitem_view, parent, false);
 			}
 			
-			Song currentSong = mySongs.get(position);
+			final Song currentSong = mySongs.get(position);
 			
 			TextView tv_name = (TextView) itemView.findViewById(R.id.item_name);
 			tv_name.setText(currentSong.getName());
@@ -130,6 +112,41 @@ public class Musikplayer extends Activity {
 			minutes /= 60;
 			duration = minutes + ":" + seconds;		
 			tv_duration.setText(duration);
+			
+			final ImageButton btn_playpause = (ImageButton) itemView.findViewById(R.id.item_button);
+			btn_playpause.setTag(String.valueOf(position));
+			
+			btn_playpause.setOnClickListener(new View.OnClickListener() {			
+				public void onClick(View v) {
+					
+					/* Song is going to be played */
+					
+					if(currentSong.clickCount % 2 == 0)  {
+						int position = Integer.valueOf((String)v.getTag());
+						Song currentSong = mySongs.get(position);
+						/* check if song is a powernApp-song -> if so, then play it directly from the raw folder */
+						if(currentSong.getPowernAppSong())  {
+							playSongFromRaw(mySongs.get(position).getName());
+						}
+						else  {
+							/* --- play song from MediaStore --- */
+							playSongFromMediaStore(currentSong.getPath());
+						}
+						btn_playpause.setImageResource(R.drawable.pause);
+						
+						/* --- if another song is playing, then reset the imageresource and increase clickCount --- */
+						
+					}
+								
+					/* Song is going to be paused */
+					
+					else  {
+						mediaPlayer.pause();
+						btn_playpause.setImageResource(R.drawable.play);
+					}
+					currentSong.clickCount++;
+				}
+	    	});
 			
 			return itemView;
 		}
@@ -167,20 +184,44 @@ public class Musikplayer extends Activity {
         }
     }
 	
+	private void playSongFromMediaStore(String path)  {
+		mediaPlayer.reset();
+		try {
+			mediaPlayer.setDataSource(path);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			mediaPlayer.prepare();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		mediaPlayer.start();
+	}
+	
 	private void playSongFromRaw(String file)  {
 
 		String[] index = file.split(" ");
 		AssetFileDescriptor afd = null;
 		
-		if(index[1].equals("1"))
+		if(index[1].equals("1"))  {
 			afd = this.getResources().openRawResourceFd(R.raw.powernapp1);
-		
+		}
+
 		else if(index[1].equals("2"))
 			afd = this.getResources().openRawResourceFd(R.raw.powernapp2);
 			
 		else if(index[1].equals("3"))
 			afd = this.getResources().openRawResourceFd(R.raw.powernapp3);
-		
+				
 	    mediaPlayer.reset();
 	    try {
 	    	mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getDeclaredLength());
@@ -188,6 +229,13 @@ public class Musikplayer extends Activity {
 			e.printStackTrace();
 		} catch (SecurityException e) {
 			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    try {
+			mediaPlayer.prepare();
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -242,13 +290,16 @@ class Song {
 	private String artist;
 	private String name;
 	private String duration;
+	private String path;
 	private boolean powernAppSong;
+	public int clickCount = 0;
 	
-	public Song(String artist, String name, String duration, boolean powernAppSong)  {
+	public Song(String artist, String name, String duration, String path, boolean powernAppSong)  {
 		super();
 		this.artist = artist;
 		this.name = name;
 		this.duration = duration;
+		this.path = path;
 		this.powernAppSong = powernAppSong;
 	}
 	
@@ -262,6 +313,10 @@ class Song {
 	
 	public String getDuration()  {
 		return duration;
+	}
+	
+	public String getPath()  {
+		return path;
 	}
 	
 	public boolean getPowernAppSong()  {
