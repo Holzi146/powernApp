@@ -17,13 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Toast;
 
 public class Musikplayer extends Activity {
 	
@@ -81,7 +81,7 @@ public class Musikplayer extends Activity {
 		}
 		
 		ArrayAdapter<Song> adapter = new MyListAdapter();		
-		lv_songs.setAdapter(adapter);
+		lv_songs.setAdapter(adapter);	
 	}
 	
 	private class MyListAdapter extends ArrayAdapter<Song>  {
@@ -99,7 +99,12 @@ public class Musikplayer extends Activity {
 			final Song currentSong = mySongs.get(position);
 			
 			TextView tv_name = (TextView) itemView.findViewById(R.id.item_name);
-			tv_name.setText(currentSong.getName());
+			/* if the song name is too long, then crop it */
+			String songName = currentSong.getName();
+			if(songName.length()>= 23)  {
+				songName = songName.substring(0, 23) + "...";
+			}
+			tv_name.setText(songName);
 			
 			TextView tv_artist = (TextView) itemView.findViewById(R.id.item_artist);
 			tv_artist.setText(currentSong.getArtist());
@@ -110,7 +115,12 @@ public class Musikplayer extends Activity {
 			int minutes = Integer.valueOf(duration);
 			int seconds = minutes % 60;
 			minutes /= 60;
-			duration = minutes + ":" + seconds;		
+			if(String.valueOf(seconds).length()==1)  {
+				duration = minutes + ":0" + seconds;
+			}
+			else  {
+				duration = minutes + ":" + seconds;
+			}
 			tv_duration.setText(duration);
 			
 			final ImageButton btn_playpause = (ImageButton) itemView.findViewById(R.id.item_button);
@@ -129,7 +139,7 @@ public class Musikplayer extends Activity {
 							playSongFromRaw(mySongs.get(position).getName());
 						}
 						else  {
-							/* --- play song from MediaStore --- */
+							/* play song from MediaStore */
 							playSongFromMediaStore(currentSong.getPath());
 						}
 						btn_playpause.setImageResource(R.drawable.pause);

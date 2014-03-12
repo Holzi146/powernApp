@@ -22,7 +22,7 @@
         android:layout_marginLeft="54dp"
         android:text="Name of song"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="19sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/item_artist"
@@ -39,11 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:adjustViewBounds="true"
         android:background="#ffff"
         android:maxHeight="40dp"
-        android:maxWidth="40dp"
+        android:maxWidth="35dp"
         android:scaleType="fitXY"
         android:src="@drawable/play" />
 
