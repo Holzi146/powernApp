@@ -236,40 +236,6 @@ public class MainActivity extends Activity {
 		startActivity(intent_connected); 
 	}
 	
-	/* Send and reveiving methode for bluetooth-connections *
-	private void SendData(BluetoothSocket s)	{
-		
-		OutputStream tmpOut = null;
-
-		try {
-            tmpOut = s.getOutputStream();
-        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
-		
-		try {
-			tmpOut.write(1);
-        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
-	}
-	
-	private void RecieveData(BluetoothSocket s)	{
-		InputStream mmInStream = null;
-		byte[] buffer = new byte[1024];  // buffer store for the stream
-        int bytes; // bytes returned from read()
- 
-        // Keep listening to the InputStream until an exception occurs
-        while (true) {
-            try {
-                // Read from the InputStream
-                bytes = mmInStream.read(buffer);
-                // Send the obtained bytes to the UI activity
-                String str = new String(buffer,"UTF-8");
-                Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                break;
-            }
-        }
-	}
-	*/
-	
 	private BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {	
 		try {
 	    	BluetoothDevice tmp_device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(device.getAddress());

@@ -1,6 +1,7 @@
 package com.example.powernapp;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -42,7 +44,7 @@ public class Connected extends Activity {
 		
 		bt_socket = Global.bt_socket;
 		
-		if(!IsBluetoothDevice(bt_socket))	{
+		if(!IspowernAppDevice(bt_socket))	{
 			/* cancel connection and return to MainActivity */
 			try {
 				bt_socket.close();
@@ -119,7 +121,32 @@ public class Connected extends Activity {
 			        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
 				}
 			});
+			
+			//RecieveData(bt_socket);
 		}
+	}
+	
+	private void RecieveData(BluetoothSocket s)	{
+		new Thread(new Runnable() { 
+	        @Override
+	        public void run() {
+	    		InputStream mmInStream = null;
+	    		byte[] buffer = new byte[1024];  // buffer store for the stream
+	    	    int bytes; // bytes returned from read()
+	    	    // Keep listening to the InputStream until an exception occurs
+	        	while (true) {
+	        		try {
+	    	            // Read from the InputStream
+	    	            bytes = mmInStream.read(buffer);
+	    	            // Send the obtained bytes to the UI activity
+	    	            String str = new String(buffer,"UTF-8");
+	    	            Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+	    	        } catch (IOException e) {
+	    	            break;
+	    	        }
+	        	}
+	        }
+	    }).start();
 	}
 	
 	@Override
@@ -155,7 +182,7 @@ public class Connected extends Activity {
 	    }
 	}
 	
-	private boolean IsBluetoothDevice(BluetoothSocket bt_socket)	{
+	private boolean IspowernAppDevice(BluetoothSocket bt_socket)	{
 		/* wait for the powernApp-package to arrive */
 		/* set a timeout (2s) */
 		return true;
