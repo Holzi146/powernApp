@@ -2,20 +2,12 @@
 <resources>
 
     <string name="app_name">powernApp</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_sleep_aids">SleepAids</string>
-    <string name="title_activity_einschlafhilfen">Einschlafhilfen</string>
-    <string name="ButtonContent">Nach Geräten suchen</string>
-    <string name="title_activity_hilfen">Hilfen</string>
-    <string name="title_activity_tipps__tricks">Tipps_Tricks</string>
-    <string name="title_activity_about__us">About_Us</string>
-    <string name="tipps_und_tricks">Tipps und Tricks</string>
-    <string name="hilfen">Hilfen</string>
-    <string name="about_us">Über uns</string>
-    <string name="title_activity_connected">Connected</string>
-    <string name="title_activity_musikplayer_eigene">Musikplayer_eigene</string>
-    <string name="title_activity_musikplayer_eigene_musik">Musikplayer_eigeneMusik</string>
-    <string name="title_activity_musikplayer__appmusik">Musikplayer_Appmusik</string>
 
 </resources>

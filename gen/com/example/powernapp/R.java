@@ -13,83 +13,92 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
-         Customize dimensions originally defined in res/values/dimens.xml (such as
-         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        /** 
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    
+         */
+        public static final int navigation_drawer_width=0x7f050002;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int logo=0x7f020001;
-        public static final int logo2=0x7f020002;
-        public static final int pause=0x7f020003;
-        public static final int pfeil=0x7f020004;
-        public static final int play=0x7f020005;
+        public static final int aboutus=0x7f020000;
+        public static final int drawer_shadow=0x7f020001;
+        public static final int home=0x7f020002;
+        public static final int ic_drawer=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int logo=0x7f020005;
+        public static final int logo2=0x7f020006;
+        public static final int microphone=0x7f020007;
+        public static final int musicplayer=0x7f020008;
+        public static final int pause=0x7f020009;
+        public static final int pfeil=0x7f02000a;
+        public static final int play=0x7f02000b;
+        public static final int tipstricks=0x7f02000c;
     }
     public static final class id {
-        public static final int about_us=0x7f090014;
-        public static final int btn_close=0x7f090000;
-        public static final int btn_search=0x7f090004;
-        public static final int btn_start=0x7f090002;
-        public static final int cb_time=0x7f090001;
-        public static final int frameLayout1=0x7f090008;
-        public static final int frameLayout2=0x7f09000a;
-        public static final int item_artist=0x7f09000e;
-        public static final int item_button=0x7f090010;
-        public static final int item_duration=0x7f09000d;
-        public static final int item_name=0x7f09000f;
-        public static final int iv_arrow=0x7f090006;
-        public static final int lv_songs=0x7f090009;
-        public static final int main=0x7f090011;
-        public static final int musikplayer=0x7f090012;
-        public static final int sb_volume=0x7f09000b;
-        public static final int tipps=0x7f090013;
-        public static final int tp_time=0x7f090003;
-        public static final int tv_klickmich=0x7f090005;
-        public static final int tv_text=0x7f09000c;
-        public static final int videoView=0x7f090007;
+        public static final int action_settings=0x7f090017;
+        public static final int action_voice=0x7f090018;
+        public static final int btn_close=0x7f090004;
+        public static final int btn_search=0x7f090008;
+        public static final int btn_start=0x7f090006;
+        public static final int cb_time=0x7f090005;
+        public static final int container=0x7f090001;
+        public static final int drawer_layout=0x7f090000;
+        public static final int frameLayout1=0x7f09000d;
+        public static final int frameLayout2=0x7f09000f;
+        public static final int item_artist=0x7f090014;
+        public static final int item_button=0x7f090016;
+        public static final int item_duration=0x7f090013;
+        public static final int item_name=0x7f090015;
+        public static final int iv_arrow=0x7f09000b;
+        public static final int lv_songs=0x7f09000e;
+        public static final int navItem_icon=0x7f090011;
+        public static final int navItem_name=0x7f090012;
+        public static final int navigation_drawer=0x7f090002;
+        public static final int relativeLayout1=0x7f09000a;
+        public static final int sb_volume=0x7f090010;
+        public static final int section_label2=0x7f090003;
+        public static final int tp_time=0x7f090007;
+        public static final int tv_klickmich=0x7f090009;
+        public static final int videoView=0x7f09000c;
     }
     public static final class layout {
-        public static final int activity_about__us=0x7f030000;
-        public static final int activity_connected=0x7f030001;
-        public static final int activity_einschlafhilfen=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int activity_musikplayer=0x7f030004;
-        public static final int activity_tipps__tricks=0x7f030005;
-        public static final int songitem_view=0x7f030006;
+        public static final int activity_main=0x7f030000;
+        public static final int fragment_aboutus=0x7f030001;
+        public static final int fragment_connected=0x7f030002;
+        public static final int fragment_main=0x7f030003;
+        public static final int fragment_musicplayer=0x7f030004;
+        public static final int fragment_navigation_drawer=0x7f030005;
+        public static final int fragment_tips=0x7f030006;
+        public static final int navigationitem_view=0x7f030007;
+        public static final int songitem_view=0x7f030008;
     }
     public static final class menu {
-        public static final int about__us=0x7f080000;
-        public static final int connected=0x7f080001;
-        public static final int main=0x7f080002;
-        public static final int musikplayer=0x7f080003;
-        public static final int tipps__tricks=0x7f080004;
+        public static final int main=0x7f080000;
+        public static final int voice=0x7f080001;
     }
     public static final class raw {
-        public static final int makeseverynap3=0x7f040000;
+        public static final int makeseverynap=0x7f040000;
         public static final int powernapp1=0x7f040001;
         public static final int powernapp2=0x7f040002;
         public static final int powernapp3=0x7f040003;
     }
     public static final class string {
-        public static final int ButtonContent=0x7f060005;
-        public static final int about_us=0x7f06000b;
-        public static final int action_settings=0x7f060001;
+        public static final int action_example=0x7f060006;
+        public static final int action_settings=0x7f060007;
         public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060002;
-        public static final int hilfen=0x7f06000a;
-        public static final int tipps_und_tricks=0x7f060009;
-        public static final int title_activity_about__us=0x7f060008;
-        public static final int title_activity_connected=0x7f06000c;
-        public static final int title_activity_einschlafhilfen=0x7f060004;
-        public static final int title_activity_hilfen=0x7f060006;
-        public static final int title_activity_musikplayer__appmusik=0x7f06000f;
-        public static final int title_activity_musikplayer_eigene=0x7f06000d;
-        public static final int title_activity_musikplayer_eigene_musik=0x7f06000e;
-        public static final int title_activity_sleep_aids=0x7f060003;
-        public static final int title_activity_tipps__tricks=0x7f060007;
+        public static final int navigation_drawer_close=0x7f060005;
+        public static final int navigation_drawer_open=0x7f060004;
+        public static final int title_section1=0x7f060001;
+        public static final int title_section2=0x7f060002;
+        public static final int title_section3=0x7f060003;
     }
     public static final class style {
         /** 
