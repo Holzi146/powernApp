@@ -19,6 +19,7 @@ import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -70,14 +71,14 @@ public class FragmentMain extends Fragment implements RecognitionListener {
 		
 		View view = inflater.inflate(R.layout.fragment_main, container, false);
 		setHasOptionsMenu(true);
-        
+
+		drawer = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+				        
 		bt_adapter = BluetoothAdapter.getDefaultAdapter();	
 		btn_search = (ImageButton) view.findViewById(R.id.btn_search);
 		tv_klickmich = (TextView) view.findViewById(R.id.tv_klickmich);
 		iv_arrow = (ImageView) view.findViewById(R.id.iv_arrow);
-		videoView = (VideoView) view.findViewById(R.id.videoView);
-		
-		drawer = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+		videoView = (VideoView) view.findViewById(R.id.videoView);				
 		
 		if (bt_adapter == null) {
     		/* Gerät hat KEIN Bluetooth, Alert wird angezeigt */
@@ -144,7 +145,7 @@ public class FragmentMain extends Fragment implements RecognitionListener {
 		    }).start();
 		}
 		
-		else  {
+		else  {	
 			/* Animations */
 			videoView.setVisibility(View.INVISIBLE);
 			btn_search.startAnimation(AnimationUtils.loadAnimation(getActivity(), android.R.anim.fade_in));
@@ -301,7 +302,7 @@ public class FragmentMain extends Fragment implements RecognitionListener {
 		speechRecognizer.setRecognitionListener(this);
 	    
 	    speechIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-	    /* even though the app is mostly German, the SpeechRecognizer gives more results when set the English */
+	    /* even though the app is mostly in German, the SpeechRecognizer gives more results when set to English */
 	    speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
 	    speechIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, MainActivity.PACKAGE_NAME);
 	    
@@ -317,7 +318,7 @@ public class FragmentMain extends Fragment implements RecognitionListener {
 					return;
 				}
 			}
-		}
+		}	
 		
 		/* SWITCH commands */
 		

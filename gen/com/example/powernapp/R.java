@@ -17,6 +17,10 @@ public final class R {
          (such as screen margins) for screens with more than 820dp of available width. This
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
+
+         Customize dimensions originally defined in res/values/dimens.xml (such as
+         screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
+    
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
@@ -86,9 +90,10 @@ public final class R {
     }
     public static final class raw {
         public static final int makeseverynap=0x7f040000;
-        public static final int powernapp1=0x7f040001;
-        public static final int powernapp2=0x7f040002;
-        public static final int powernapp3=0x7f040003;
+        public static final int makeseverynap3=0x7f040001;
+        public static final int powernapp1=0x7f040002;
+        public static final int powernapp2=0x7f040003;
+        public static final int powernapp3=0x7f040004;
     }
     public static final class string {
         public static final int action_example=0x7f060006;

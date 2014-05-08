@@ -16,7 +16,7 @@ public class MainActivity extends Activity implements NavigationDrawerCallbacks 
 	
 	List<String> fragmentList = new ArrayList<String>();
 
-    public NavigationDrawerFragment mNavigationDrawerFragment;
+    public static NavigationDrawerFragment mNavigationDrawerFragment;
     private String mTitle;
     
     boolean doubleBackToExitPressedOnce;
@@ -29,13 +29,12 @@ public class MainActivity extends Activity implements NavigationDrawerCallbacks 
         PACKAGE_NAME = getPackageName();
         
         /* ---------- Navigation Drawer actions --------------- */
-        
-        mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = "powernApp";
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout);                 
-        
+		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);                	        
         mDrawerLayout.setFocusableInTouchMode(false);
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout); 
+        
+        mTitle = "powernApp";
     }
 
     @Override

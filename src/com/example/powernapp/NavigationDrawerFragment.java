@@ -195,6 +195,16 @@ public class NavigationDrawerFragment extends Fragment {
         // Forward the new configuration the drawer toggle component.
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+         // The action bar home/up action should open or close the drawer.
+         // ActionBarDrawerToggle will take care of this.
+        if (mDrawerToggle.onOptionsItemSelected(item))
+        	return true;
+        
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * Per the navigation drawer design guidelines, updates the action bar to show the global app

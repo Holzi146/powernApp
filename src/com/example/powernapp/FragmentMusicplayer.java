@@ -57,7 +57,7 @@ public class FragmentMusicplayer extends Fragment  {
 	    }).start();
 		
 		/* adding the powernApp-songs to the list */	
-		mySongs.add(new Song(0, "powernApp", "Song 1", "230", null, true));
+		mySongs.add(new Song(0, "powernApp", "Song 1", "390", null, true));
 		mySongs.add(new Song(1, "powernApp", "Song 2", "560", null, true));
 		mySongs.add(new Song(2, "powernApp", "Song 3", "340", null, true));
 		
@@ -154,8 +154,8 @@ public class FragmentMusicplayer extends Fragment  {
 			
 			/* if the song name is too long, then crop it */
 			String songName = currentSong.getName();
-			if(songName.length()>= 23)  {
-				songName = songName.substring(0, 23) + "...";
+			if(songName.length() > 21)  {
+				songName = songName.substring(0, 21) + "...";
 			}
 			holder.tv_name.setText(songName);
 			
