@@ -1,13 +1,18 @@
 package com.example.powernapp;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.bluetooth.BluetoothSocket;
 import android.content.DialogInterface;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +33,8 @@ public class FragmentConnected extends Fragment {
 	Button btn_start;
 	CheckBox cb_time;
 	TimePicker tp_time;
+	
+	InputStream mInputStream;
 	
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,6 +108,21 @@ public class FragmentConnected extends Fragment {
 			btn_start.setOnClickListener(new View.OnClickListener() {			
 				@Override
 				public void onClick(View arg0) {
+					
+					Toast.makeText(getActivity(), "powernApp gestartet", Toast.LENGTH_SHORT).show();
+					
+					btn_start.setEnabled(false);
+					cb_time.setEnabled(false);
+					tp_time.setEnabled(false);
+					
+					new Handler().postDelayed(new Runnable() {
+		    	        @Override
+		    	        public void run() {
+		    	            WakeUp(bt_socket);                
+		    	        }
+		    	    }, 5000);
+					
+					/*
 					OutputStream tmpOut = null;
 
 					try {
@@ -108,8 +130,9 @@ public class FragmentConnected extends Fragment {
 			        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
 					
 					try {
-						tmpOut.write(1);
-			        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
+						/* start powernApp *
+						tmpOut.write(3);
+			        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }*/
 				}
 			});
 			
@@ -119,9 +142,98 @@ public class FragmentConnected extends Fragment {
         return view;
     }
 	
+	private void RecieveData(BluetoothSocket bt_socket) {
+		
+		//WakeUp(bt_socket);
+	}
+
+	private void WakeUp(final BluetoothSocket bt_socket)  {
+		/* AlertDialog with current ringtone */
+		Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+		final Ringtone r = RingtoneManager.getRingtone(getActivity(), notification);
+		r.play();
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		builder.setTitle("Wecker");
+		builder.setMessage("powernApp ist beendet!");
+		builder.setCancelable(false);
+		builder.setPositiveButton("Ok",new DialogInterface.OnClickListener() {     		
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+    			/* ringtone is being stopped */
+				r.stop();
+				
+				/* cancel socket connection */
+				try {
+					bt_socket.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				/* go back to main */
+				Global.isConnected = false;
+				getFragmentManager().beginTransaction().replace(R.id.container, new FragmentMain()).commit();
+			}
+		});
+		AlertDialog dialog = builder.create();    		
+		dialog.show();
+	}
+	
 	private boolean IspowernAppDevice(BluetoothSocket bt_socket)	{
-		/* wait for the powernApp-package to arrive */
-		/* set a timeout (2s) */
+		/* send a one for the powernApp identification *
+		OutputStream tmpOut = null;
+		try {
+            tmpOut = bt_socket.getOutputStream();
+        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
+		
+		try {
+			/* powernApp identification *
+			tmpOut.write(3);
+        } catch (IOException e) { Log.e("",e.getLocalizedMessage()); }
+		/* wait for the powernApp-package to arrive *
+		
+		try {
+			mInputStream = bt_socket.getInputStream();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		new Thread(new Runnable()
+	    {
+	        public void run()
+	        {                
+	           while(!Thread.currentThread().isInterrupted())
+	           {
+	                try 
+	                {
+	                    int bytesAvailable = mInputStream.available();                        
+	                    if(bytesAvailable > 0)
+	                    {
+	                        byte[] packetBytes = new byte[bytesAvailable];
+	                        mInputStream.read(packetBytes);
+
+	                        final String data = new String(packetBytes, "US-ASCII");
+	                            	
+	                        Handler handler = null;
+	                        handler.post(new Runnable()
+	                        {
+	                            public void run()
+	                            {
+	                                Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
+	                            }
+	                        });
+	                    }
+	                } 
+	                catch (IOException ex) 
+	                {
+	                	Toast.makeText(getActivity(), "Error receiving data", Toast.LENGTH_SHORT).show();
+	                }
+	           }
+	        }
+	    }).start();*/
+
 		return true;
 	}
 }
